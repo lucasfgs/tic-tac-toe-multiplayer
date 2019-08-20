@@ -1,5 +1,8 @@
+const PORT = process.env.PORT || 80;
+const express = require("express");
+const app = express().listen(PORT, () => console.log(`Listening on ${PORT}`));
 const io = require("socket.io"),
-  server = io.listen(process.env.PORT || 5000);
+  server = io.listen(app);
 
 const { switchPlayer, verifyWinner } = require("./game");
 
@@ -12,6 +15,7 @@ server.on("connection", socket => {
   console.info(`We have a new client :) | id: ${socket.id}`);
 
   socket.emit("sendPlayer", lastPlayer);
+  socket.emit("yourTurn", true);
   lastPlayer = switchPlayer(player, lastPlayer);
 
   socket.on("playerClick", data => {
@@ -21,6 +25,7 @@ server.on("connection", socket => {
     let winner = verifyWinner(data.player, data.board);
     socket.emit("winner", winner);
     socket.broadcast.emit("winner", winner);
+    socket.broadcast.emit("yourTurn", true);
   });
 
   // when socket disconnects, remove it from the list:
