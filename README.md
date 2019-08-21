@@ -22,7 +22,7 @@ yarn install
 
 ## **Usage**
 
-Before start your app and server you need to set a port of your server in server/src/index.js. Then you need to go in game/src/services/socket.js and set you socket location (probably https://localhost:8000)
+Before start your app and server you need to set a port of your server in server/src/index.js. Then you need to go in game/src/services/socket.js and set your socket location (probably https://localhost:8000) replacing "PUT YOUR SERVER SOCKET ADDRESS HERE".
 
 **Start the app:**
 
