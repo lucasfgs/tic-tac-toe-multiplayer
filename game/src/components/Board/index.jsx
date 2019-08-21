@@ -10,12 +10,11 @@ import {
   myTurn
 } from "../../services/socket";
 
-const Board = ({ winner, setWinner, newGame, setNewGame }) => {
+const Board = ({ winner, setWinner, newGame, setNewGame, turn, setTurn }) => {
   const initialBoardState = ["", "", "", "", "", "", "", "", ""];
 
   const [board, setBoard] = useState(initialBoardState);
   const [player, setPlayer] = useState("");
-  const [turn, setTurn] = useState(false);
 
   recievePlayer(player => {
     setPlayer(player);

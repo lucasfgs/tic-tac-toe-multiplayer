@@ -1,6 +1,6 @@
 import openSocket from "socket.io-client";
 
-const socket = openSocket("localhost:80");
+const socket = openSocket("PUT YOUR SERVER SOCKET ADDRESS HERE");
 
 export const updateBoard = cb => {
   socket.on("updateBoard", newBoard => cb(newBoard));
